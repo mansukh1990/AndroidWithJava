@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="line">
+            <stroke
+                android:width="2dp"
+                android:color="#746E6E" />
+        </shape>
+    </item>
+
+    <item>
+        <rotate android:fromDegrees="30">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+
+    <item>
+        <rotate android:fromDegrees="60">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+
+    <item>
+        <rotate android:fromDegrees="90">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+
+    <item>
+        <rotate android:fromDegrees="120">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+    <item>
+        <rotate android:fromDegrees="150">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+
+    <item>
+        <rotate android:fromDegrees="180">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+
+    <item>
+        <rotate android:fromDegrees="210">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+    <item>
+        <rotate android:fromDegrees="240">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+
+    <item>
+        <rotate android:fromDegrees="270">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+    <item>
+        <rotate android:toDegrees="300">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+    <item>
+        <rotate android:fromDegrees="330">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+
+    <item>
+        <rotate android:fromDegrees="360">
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#746E6E" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>
