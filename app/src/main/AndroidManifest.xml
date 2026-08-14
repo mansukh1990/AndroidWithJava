@@ -3,6 +3,37 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
+    <queries>
+
+        <!-- Phone / Dialer apps -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+
+            <data android:scheme="tel" />
+        </intent>
+
+        <!-- SMS apps -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+
+            <data android:scheme="smsto" />
+        </intent>
+
+        <!-- Email app -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+
+            <data android:scheme="mailto" />
+        </intent>
+
+        <!-- Share app -->
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+
+            <data android:mimeType="text/plain" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,24 +43,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidWithJava">
+
+        <activity
+            android:name=".fragment.FragmentActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".implicit_intent.ImplicitIntentActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".notification.NotificationActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".alertdialog.AlertDialogActivity"
             android:exported="false" />
@@ -49,33 +78,5 @@
             android:name=".MainActivity"
             android:exported="false" />
     </application>
-
-    <queries>
-
-        <!-- Phone / Dialer apps -->
-        <intent>
-            <action android:name="android.intent.action.DIAL" />
-            <data android:scheme="tel" />
-        </intent>
-
-        <!-- SMS apps -->
-        <intent>
-            <action android:name="android.intent.action.SENDTO" />
-            <data android:scheme="smsto" />
-        </intent>
-
-        <!-- Email app-->
-        <intent>
-            <action android:name="android.intent.action.SENDTO" />
-            <data android:scheme="mailto" />
-        </intent>
-
-        <!-- Share app-->
-        <intent>
-            <action android:name="android.intent.action.SEND" />
-            <data android:mimeType="text/plain" />
-        </intent>
-
-    </queries>
 
 </manifest>
