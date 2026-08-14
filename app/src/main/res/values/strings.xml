@@ -5,4 +5,8 @@
     <string name="str_save">Save</string>
     <string name="ic_search">Search</string>
     <string name="str_more">More</string>
+    <string name="str_dial">Dial</string>
+    <string name="str_message">Message</string>
+    <string name="str_email">Email</string>
+    <string name="str_share">Share</string>
 </resources>
