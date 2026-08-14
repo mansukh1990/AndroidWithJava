@@ -34,22 +34,20 @@ public class ImplicitIntentActivity extends AppCompatActivity {
 
         String phoneNumber = "+919737582727";
 
-        btnDial.setOnClickListener(view -> {
-            IntentUtils.dialNumber(this, phoneNumber);
+        btnDial.setOnClickListener(view -> IntentUtils.dialNumber(this, phoneNumber));
 
-        });
-        btnMessage.setOnClickListener(view -> {
-            IntentUtils.sendMessage(this, phoneNumber, "Hello from AndroidWithJava!");
-        });
-        btnEmail.setOnClickListener(view -> {
-            IntentUtils.sendEmail(
-                    this,
-                    new String[]{"mrm.ec08osec@gmail.com","mansukhmakwana030@gmail.com"},
-                    "Subject line",
-                    "Email body text"
-            );
-        });
+        btnMessage.setOnClickListener(view ->
+                IntentUtils.sendMessage(this, phoneNumber, "Hello from AndroidWithJava!"));
 
-        btnShare.setOnClickListener(v -> IntentUtils.shareText(this, "Check out this app!"));
+        btnEmail.setOnClickListener(view ->
+                IntentUtils.sendEmail(
+                this,
+                new String[]{"mrm.ec08osec@gmail.com","mansukhmakwana030@gmail.com"},
+                "Subject line",
+                "Email body text"
+        ));
+
+        btnShare.setOnClickListener(v ->
+                IntentUtils.shareText(this, "Check out this app!"));
     }
 }
