@@ -70,6 +70,7 @@
             <data android:scheme="mailto" />
         </intent>
 
+        <!-- Share app-->
         <intent>
             <action android:name="android.intent.action.SEND" />
             <data android:mimeType="text/plain" />
