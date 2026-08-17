@@ -43,9 +43,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidWithJava">
-
         <activity
-            android:name=".fragment.FragmentActivity"
+            android:name=".fragment_dynamic.FragmentDynamicActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,6 +52,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".fragment.FragmentActivity"
+            android:exported="true" />
         <activity
             android:name=".implicit_intent.ImplicitIntentActivity"
             android:exported="false" />
