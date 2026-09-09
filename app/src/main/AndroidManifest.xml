@@ -44,29 +44,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidWithJava">
         <activity
-            android:name=".tablayoutwithviewpagertwo.TabLayoutWithViewpagerTwoActivity"
+            android:name=".radiobuttonwithviewpagertwo.RadioButtonWithViewPagerTwoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".tablayoutwithviewpagertwo.TabLayoutWithViewpagerTwoActivity"
+            android:exported="false">
         </activity>
         <activity
             android:name=".tablayoutwithviewpager.TabLayoutWithViewpagerActivity"
             android:exported="false" />
         <activity
             android:name=".fragment_dynamic.FragmentDynamicActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".fragment.FragmentActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".implicit_intent.ImplicitIntentActivity"
             android:exported="false" />
