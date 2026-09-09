@@ -44,7 +44,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidWithJava">
         <activity
-            android:name=".radiobuttonwithviewpagertwo.RadioButtonWithViewPagerTwoActivity"
+            android:name=".bottomnavigationview.BottomNavigationViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,16 +53,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".tablayoutwithviewpagertwo.TabLayoutWithViewpagerTwoActivity"
+            android:name=".radiobuttonwithviewpagertwo.RadioButtonWithViewPagerTwoActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".tablayoutwithviewpagertwo.TabLayoutWithViewpagerTwoActivity"
+            android:exported="false" />
         <activity
             android:name=".tablayoutwithviewpager.TabLayoutWithViewpagerActivity"
             android:exported="false" />
         <activity
             android:name=".fragment_dynamic.FragmentDynamicActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".fragment.FragmentActivity"
             android:exported="false" />
