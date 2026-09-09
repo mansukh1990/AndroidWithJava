@@ -45,17 +45,14 @@ public class RadioButtonWithViewPagerTwoActivity extends AppCompatActivity {
 
         viewPager.setUserInputEnabled(false);
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(@NonNull RadioGroup radioGroup, int checkedId) {
-                if (checkedId == R.id.radioChat) {
-                    viewPager.setCurrentItem(0);
-                } else if (checkedId == R.id.radioStatus) {
-                    viewPager.setCurrentItem(1);
+        radioGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
+            if (checkedId == R.id.radioChat) {
+                viewPager.setCurrentItem(0);
+            } else if (checkedId == R.id.radioStatus) {
+                viewPager.setCurrentItem(1);
 
-                } else {
-                    viewPager.setCurrentItem(2);
-                }
+            } else {
+                viewPager.setCurrentItem(2);
             }
         });
 
