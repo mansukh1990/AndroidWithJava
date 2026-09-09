@@ -44,6 +44,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidWithJava">
         <activity
+            android:name=".tablayoutwithviewpagertwo.TabLayoutWithViewpagerTwoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".tablayoutwithviewpager.TabLayoutWithViewpagerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".fragment_dynamic.FragmentDynamicActivity"
             android:exported="true">
             <intent-filter>
