@@ -15,6 +15,9 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class TabLayoutWithViewpagerTwoActivity extends AppCompatActivity {
 
+    TabLayout tabLayout;
+    ViewPager2 viewPager2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +29,13 @@ public class TabLayoutWithViewpagerTwoActivity extends AppCompatActivity {
             return insets;
         });
 
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
-        ViewPager2 viewPager2 = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager2 = findViewById(R.id.viewPagerTwo);
 
         ViewPagerTwoAdapter viewPagerTwoAdapter = new ViewPagerTwoAdapter(this);
         viewPager2.setAdapter(viewPagerTwoAdapter);
+
+        viewPager2.setUserInputEnabled(true);
 
         new TabLayoutMediator(tabLayout, viewPager2,
                 (tab, position) -> {
