@@ -7,20 +7,17 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidwithjava.R;
+import com.example.androidwithjava.databinding.DialogAddUpdateContactBinding;
+import com.example.androidwithjava.databinding.RowContactBinding;
 
 import java.util.ArrayList;
 
@@ -38,9 +35,8 @@ public class RecyclerViewContactAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.row_contact, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        RowContactBinding binding = RowContactBinding.inflate(LayoutInflater.from(context), parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
@@ -48,73 +44,77 @@ public class RecyclerViewContactAdapter extends RecyclerView.Adapter<RecyclerVie
 
         ContactModel contactModel = arrContacts.get(position);
 
-        holder.imgContact.setImageResource(contactModel.img);
-        holder.txtName.setText(contactModel.name);
-        holder.txtNumber.setText(contactModel.number);
+        holder.binding.imgProfile.setImageResource(contactModel.img);
+        holder.binding.tvName.setText(contactModel.name);
+        holder.binding.tvContactNumber.setText(contactModel.number);
 
-        holder.editContact.setOnClickListener(view -> {
+        holder.binding.imgEdit.setOnClickListener(view ->
+                showUpdateDialog(contactModel, holder.getBindingAdapterPosition()));
 
-            Dialog dialog = new Dialog(context);
-            dialog.setContentView(R.layout.dialog_add_update_contact);
+        holder.binding.imgDelete.setOnClickListener(view -> {
+            holder.binding.imgDelete.setOnClickListener(v ->
+                    showDeleteDialog(holder.getBindingAdapterPosition()));
+        });
 
-            Window window = dialog.getWindow();
-            if (window != null) {
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    private void showDeleteDialog(int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setTitle("Delete Contact")
+                .setMessage("Are Your Sure Want To Delete Contact?")
+                .setIcon(R.drawable.ic_baseline_delete_forever_24)
+                .setPositiveButton("YES", (dialogInterface, i) -> {
+                    arrContacts.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, arrContacts.size());
+                    Toast.makeText(context, "Delete Contact Successfully", Toast.LENGTH_SHORT).show();
+                })
+                .setNegativeButton("NO", (dialogInterface, i) -> dialogInterface.dismiss());
+
+        builder.show();
+    }
+
+    private void showUpdateDialog(ContactModel contactModel, int position) {
+        Dialog dialog = new Dialog(context);
+        DialogAddUpdateContactBinding dialogAddUpdateContactBinding = DialogAddUpdateContactBinding.inflate(LayoutInflater.from(context));
+        dialog.setContentView(dialogAddUpdateContactBinding.getRoot());
+
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+
+        dialogAddUpdateContactBinding.edtName.setText(contactModel.name);
+        dialogAddUpdateContactBinding.edtNumber.setText(contactModel.number);
+
+        dialogAddUpdateContactBinding.tvAddContact.setText("Update Contact");
+        dialogAddUpdateContactBinding.btnAdd.setText("Update");
+
+        dialogAddUpdateContactBinding.btnAdd.setOnClickListener(view1 -> {
+
+            String name = dialogAddUpdateContactBinding.edtName.getText().toString().trim(), number = dialogAddUpdateContactBinding.edtNumber.getText().toString().trim();
+
+            if (name.isEmpty()) {
+                Toast.makeText(context, "Please Enter Contact Name!", Toast.LENGTH_SHORT).show();
+                return;
+
             }
+            if (number.isEmpty()) {
+                Toast.makeText(context, "Please Enter Mobile Numer!", Toast.LENGTH_SHORT).show();
 
-            EditText editTextName = dialog.findViewById(R.id.edtName);
-            EditText editTextNumber = dialog.findViewById(R.id.edtNumber);
-            Button btnAdd = dialog.findViewById(R.id.btnAdd);
-            TextView textViewContact = dialog.findViewById(R.id.tvAddContact);
+            }
+            arrContacts.set(position, new ContactModel(contactModel.img, name, number));
+            notifyItemChanged(position);
 
-            editTextName.setText(contactModel.name);
-            editTextNumber.setText(contactModel.number);
+            Toast.makeText(context, "Update Contact Successfully", Toast.LENGTH_SHORT).show();
 
-            textViewContact.setText("Update Contact");
-            btnAdd.setText("Update");
+            dialog.dismiss();
 
-            btnAdd.setOnClickListener(view1 -> {
-
-                String name = editTextName.getText().toString().trim(), number = editTextNumber.getText().toString().trim();
-
-                if (name.isEmpty()) {
-                    Toast.makeText(context, "Please Enter Contact Name!", Toast.LENGTH_SHORT).show();
-                    return;
-
-                }
-                if (number.isEmpty()) {
-                    Toast.makeText(context, "Please Enter Mobile Numer!", Toast.LENGTH_SHORT).show();
-
-                }
-                arrContacts.set(position, new ContactModel(contactModel.img, name, number));
-                notifyItemChanged(position);
-
-                Toast.makeText(context, "Update Contact Successfully", Toast.LENGTH_SHORT).show();
-
-                dialog.dismiss();
-
-            });
-            dialog.setCancelable(false);
-            dialog.show();
         });
-
-        holder.deleteContact.setOnClickListener(view -> {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(context)
-                    .setTitle("Delete Contact")
-                    .setMessage("Are Your Sure Want To Delete Contact?")
-                    .setIcon(R.drawable.ic_baseline_delete_forever_24)
-                    .setPositiveButton("YES", (dialogInterface, i) -> {
-                        arrContacts.remove(position);
-                        notifyItemRemoved(position);
-                        Toast.makeText(context, "Delete Contact Successfully", Toast.LENGTH_SHORT).show();
-                    })
-                    .setNegativeButton("NO", (dialogInterface, i) -> dialogInterface.dismiss());
-
-            builder.show();
-        });
-
+        dialog.setCancelable(false);
+        dialog.show();
     }
 
     @Override
@@ -123,19 +123,12 @@ public class RecyclerViewContactAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        final RowContactBinding binding;
 
-        TextView txtName, txtNumber;
-        ImageView imgContact;
-        ImageView deleteContact, editContact;
+        public ViewHolder(@NonNull RowContactBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            imgContact = itemView.findViewById(R.id.imgProfile);
-            txtName = itemView.findViewById(R.id.tvName);
-            txtNumber = itemView.findViewById(R.id.tvContactNumber);
-            deleteContact = itemView.findViewById(R.id.imgDelete);
-            editContact = itemView.findViewById(R.id.imgEdit);
         }
     }
 }

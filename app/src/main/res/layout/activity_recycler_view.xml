@@ -31,7 +31,7 @@
             app:tint="@color/white"
             app:fabSize="normal"
             android:backgroundTint="#00BCD4"
-            android:layout_margin="20dp"
+            android:layout_margin="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:ignore="ContentDescription" />
