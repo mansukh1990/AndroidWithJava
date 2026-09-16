@@ -5,20 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.androidwithjava.R;
+import com.example.androidwithjava.databinding.FragmentBBinding;
 
 public class FragmentBFragment extends Fragment {
+
+    private FragmentBBinding binding;
 
     public FragmentBFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_b, container, false);
+       binding = FragmentBBinding.inflate(inflater,container,false);
+        return binding.getRoot();
     }
 }

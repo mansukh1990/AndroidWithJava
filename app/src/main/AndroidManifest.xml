@@ -61,7 +61,13 @@
             android:exported="false" />
         <activity
             android:name=".fragment_dynamic.FragmentDynamicActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".fragment.FragmentActivity"
             android:exported="false" />
@@ -80,11 +86,7 @@
         <activity
             android:name=".recyclerview.RecyclerViewActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".listview_spinner_autocomplete_textview.ListViewActivity"

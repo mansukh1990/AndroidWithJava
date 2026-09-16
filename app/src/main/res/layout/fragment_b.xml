@@ -11,6 +11,10 @@
         android:id="@+id/tvFragB"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="B"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:textColor="@color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
