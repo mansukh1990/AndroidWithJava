@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <queries>
+        <!-- Declare visibility for Google Play Services -->
+        <package android:name="com.google.android.gms" />
 
         <!-- Phone / Dialer apps -->
         <intent>
@@ -45,14 +51,10 @@
         android:theme="@style/Theme.AndroidWithJava">
         <activity
             android:name=".bottomnavigationview.BottomNavigationViewActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".radiobuttonwithviewpagertwo.RadioButtonWithViewPagerTwoActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".tablayoutwithviewpagertwo.TabLayoutWithViewpagerTwoActivity"
             android:exported="false" />
@@ -61,12 +63,7 @@
             android:exported="false" />
         <activity
             android:name=".fragment_dynamic.FragmentDynamicActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".fragment.FragmentActivity"
@@ -85,9 +82,7 @@
             android:exported="false" />
         <activity
             android:name=".recyclerview.RecyclerViewActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".listview_spinner_autocomplete_textview.ListViewActivity"
             android:exported="false" />
@@ -97,6 +92,36 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
+        <activity
+            android:name=".google_map.MapsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_maps"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
+
+    <!--
+    Client ID = 1013961384186-e9nneol1ciek5cbu3hsab6759f7pruhk.apps.googleusercontent.com
+     -->
 
 </manifest>
