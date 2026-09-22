@@ -101,20 +101,12 @@ public class PickImageFromCameraGalleryActivity extends AppCompatActivity {
             }
         });
 
-        dialogBinding.layoutGallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                galleryLauncher.launch("image/*");
-            }
+        dialogBinding.layoutGallery.setOnClickListener(v -> {
+            dialog.dismiss();
+            galleryLauncher.launch("image/*");
         });
 
-        dialogBinding.layoutCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        dialogBinding.layoutCancel.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }
