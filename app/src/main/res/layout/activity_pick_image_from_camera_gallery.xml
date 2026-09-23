@@ -22,6 +22,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnPreviewImage"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_button_oval"
+        android:padding="10dp"
+        android:src="@drawable/ic_preview"
+        android:contentDescription="Preview Image"
+        android:clickable="true"
+        android:focusable="true"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imgProfile"
+        app:layout_constraintEnd_toEndOf="@+id/imgProfile" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnUploadImage"
         android:layout_width="match_parent"
